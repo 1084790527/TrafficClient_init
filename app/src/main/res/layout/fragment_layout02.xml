@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="红绿灯信息管理"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="35dp">
+        <TextView
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="排序："/>
+        <Spinner
+            android:id="@+id/sp_sort"
+            android:background="#00000000"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+        <Button
+            android:id="@+id/btn_inquire"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="查询"/>
+    </LinearLayout>
+
+    <TableLayout
+
+        android:background="#6e6e6e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="35dp" >
+        <TableRow>
+            <TextView android:background="#ffffff" android:layout_margin="1dp"  android:gravity="center" android:layout_height="30dp" android:layout_width="130dp" android:text="路口" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp"  android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:text="红灯时长（S）" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp"  android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:text="黄灯时长（S）" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp"  android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:text="绿灯时长（S）" android:textSize="20sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_1_1" android:gravity="center" android:layout_height="30dp" android:layout_width="130dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_1_2" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_1_3" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_1_4" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_2_1" android:gravity="center" android:layout_height="30dp" android:layout_width="130dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_2_2" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_2_3" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_2_4" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_3_1" android:gravity="center" android:layout_height="30dp" android:layout_width="130dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_3_2" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_3_3" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_3_4" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_4_1" android:gravity="center" android:layout_height="30dp" android:layout_width="130dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_4_2" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_4_3" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_4_4" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_5_1" android:gravity="center" android:layout_height="30dp" android:layout_width="130dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_5_2" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_5_3" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+            <TextView android:background="#ffffff" android:layout_margin="1dp" android:id="@+id/tb_5_4" android:gravity="center" android:layout_height="30dp" android:layout_width="150dp" android:textSize="20sp"/>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

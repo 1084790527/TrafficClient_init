@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+
+        <!--<android.support.v4.view.ViewPager-->
+            <!--android:id="@+id/vp_vp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<android.support.v4.view.PagerTabStrip-->
+                <!--android:id="@+id/vp_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+
+            <!--</android.support.v4.view.PagerTabStrip>-->
+        <!--</android.support.v4.view.ViewPager>-->
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#000000">
+            <RadioButton
+                android:layout_margin="1dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/rb_1"
+                android:text="1"
+                android:textSize="20sp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="#f1f1f1"/>
+            <RadioButton
+                android:background="#f1f1f1"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="1dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/rb_2"
+                android:text="2"
+                android:textSize="20sp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:button="@null"/>
+            <TextView
+                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+        </RadioGroup>
+        <RelativeLayout
+            android:id="@+id/rl_rl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="match_parent" />
+</LinearLayout>

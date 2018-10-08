@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ViolatingPicture">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableRow android:gravity="center">
+                <ImageView android:id="@+id/iv_item1" android:src="@drawable/weizhang01" android:layout_width="160dp" android:layout_height="100dp"/>
+                <ImageView android:id="@+id/iv_item2" android:src="@drawable/weizhang01" android:layout_width="160dp" android:layout_height="100dp"/>
+                <ImageView android:id="@+id/iv_item3" android:src="@drawable/weizhang01" android:layout_width="160dp" android:layout_height="100dp"/>
+                <ImageView android:id="@+id/iv_item4" android:src="@drawable/weizhang01" android:layout_width="160dp" android:layout_height="100dp"/>
+            </TableRow>
+        </TableLayout>
+        <ImageView
+            android:id="@+id/iv_item"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </RelativeLayout>
+
+</FrameLayout>
