@@ -12,9 +12,9 @@ public class Fragment_10_Adapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> strings;
-    private List<Fragment_10_Adapter> list;
+    private List<List<Fragment_10_Adapter>> list;
 
-    public Fragment_10_Adapter(Context context, List<String> strings,List<Fragment_10_Adapter> list){
+    public Fragment_10_Adapter(Context context, List<String> strings,List<List<Fragment_10_Adapter>> list){
         this.context=context;
         this.strings=strings;
         this.list=list;
@@ -36,7 +36,7 @@ public class Fragment_10_Adapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int i, int i1) {
-        return list.get(i);
+        return list.get(i).get(i1);
     }
 
     @Override
