@@ -19,6 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
+import com.mad.trafficclient.util.UrlBean;
+import com.mad.trafficclient.util.Util;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,6 +43,7 @@ public class Fragment_5 extends Fragment implements View.OnClickListener {
     private ScheduledFuture tData;
     private SharedPreferences loadSettingLoad;
     private int temperature,humidity,light,co2,pm25,roadStatus;
+    private UrlBean urlBean;
     public Fragment_5() {
         // Required empty public constructor
     }
@@ -77,7 +80,7 @@ public class Fragment_5 extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
         RequestQueue queue= Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetAllSense.do", jsonObject,
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetAllSense.do", jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
@@ -135,7 +138,7 @@ public class Fragment_5 extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
         RequestQueue queue= Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetRoadStatus.do", jsonObject,
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetRoadStatus.do", jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
@@ -168,6 +171,7 @@ public class Fragment_5 extends Fragment implements View.OnClickListener {
     }
 
     private void init() {
+        urlBean= Util.loadSetting(getActivity());
         rl_temperature= (RelativeLayout) view.findViewById(R.id.rl_temperature);
         rl_temperature.setOnClickListener(this);
         rl_humidity= (RelativeLayout) view.findViewById(R.id.rl_humidity);

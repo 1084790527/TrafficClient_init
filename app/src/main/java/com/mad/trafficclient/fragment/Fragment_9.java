@@ -28,6 +28,8 @@ import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
 import com.mad.trafficclient.bean.UserBean;
 import com.mad.trafficclient.util.LoadingDialog;
+import com.mad.trafficclient.util.UrlBean;
+import com.mad.trafficclient.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,6 +51,7 @@ public class Fragment_9 extends Fragment implements ListAdapter_9.onItemDeleteLi
     private ListView lv_lv;
     private List<UserBean> viewList;
     private ListAdapter_9 adapter;
+    private UrlBean urlBean;
 
     public Fragment_9() {
         // Required empty public constructor
@@ -99,7 +102,7 @@ public class Fragment_9 extends Fragment implements ListAdapter_9.onItemDeleteLi
             }
             RequestQueue queue=Volley.newRequestQueue(getActivity());
             final int finalI = i;
-            JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetCarAccountBalance.do", object, new Response.Listener<JSONObject>() {
+            JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetCarAccountBalance.do", object, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject jsonObject) {
 //                    Log.d(TAG, "onResponse: "+jsonObject.toString());
@@ -128,7 +131,7 @@ public class Fragment_9 extends Fragment implements ListAdapter_9.onItemDeleteLi
             e.printStackTrace();
         }
         RequestQueue queue=Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetCarInfo.do", object, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetCarInfo.do", object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
 //                Log.d(TAG, "onResponse: "+jsonObject.toString());
@@ -173,7 +176,7 @@ public class Fragment_9 extends Fragment implements ListAdapter_9.onItemDeleteLi
             e.printStackTrace();
         }
         RequestQueue queue=Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetSUserInfo.do", object, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetSUserInfo.do", object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
 //                Log.d(TAG, "onResponse: "+jsonObject.toString());
@@ -253,6 +256,7 @@ public class Fragment_9 extends Fragment implements ListAdapter_9.onItemDeleteLi
     }
 
     private void iniv() {
+        urlBean= Util.loadSetting(getActivity());
         lv_lv = (ListView) view.findViewById(R.id.lv_lv);
     }
 
@@ -333,7 +337,7 @@ public class Fragment_9 extends Fragment implements ListAdapter_9.onItemDeleteLi
             e.printStackTrace();
         }
         RequestQueue queue=Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/SetCarAccountRecharge.do", object, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/SetCarAccountRecharge.do", object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 LoadingDialog.disDialog();

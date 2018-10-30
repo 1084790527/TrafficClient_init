@@ -10,6 +10,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
+import com.mad.trafficclient.bean.UserBean;
+import com.mad.trafficclient.util.UrlBean;
+import com.mad.trafficclient.util.Util;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +47,7 @@ public class Fragment_2 extends Fragment implements View.OnClickListener{
 	private ArrayAdapter<String> adapter;
 	private int sp_item;
 	private JSONArray jsonArray;
+	private UrlBean urlBean;
 	private Handler handler = new Handler();
 	private Runnable runnable = new Runnable() {
 		@Override
@@ -158,7 +162,7 @@ public class Fragment_2 extends Fragment implements View.OnClickListener{
 			}
 			RequestQueue queue= Volley.newRequestQueue(getActivity());
 			final int finalI = i;
-			JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetTrafficLightConfigAction.do", jsonObject,
+			JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetTrafficLightConfigAction.do", jsonObject,
 					new Response.Listener<JSONObject>() {
 						@Override
 						public void onResponse(JSONObject jsonObject) {
@@ -211,6 +215,7 @@ public class Fragment_2 extends Fragment implements View.OnClickListener{
 		});
 	}
 	private void init() {
+		urlBean= Util.loadSetting(getActivity());
 		tb_1_1= (TextView) view.findViewById(R.id.tb_1_1);
 		tb_1_2= (TextView) view.findViewById(R.id.tb_1_2);
 		tb_1_3= (TextView) view.findViewById(R.id.tb_1_3);

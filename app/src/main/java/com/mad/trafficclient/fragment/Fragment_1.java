@@ -10,6 +10,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
+import com.mad.trafficclient.util.UrlBean;
+import com.mad.trafficclient.util.Util;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -108,8 +110,10 @@ public class Fragment_1 extends Fragment implements View.OnClickListener
 			e.printStackTrace();
 		}
 
+        UrlBean urlBean=Util.loadSetting(getActivity());
+        Log.d(TAG, "setData: "+urlBean.toString());
 		RequestQueue queue= Volley.newRequestQueue(getActivity());
-		JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/SetCarAccountRecharge.do", jsonObject,
+		JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+ Util.loadSetting(getActivity()).getUrl()+":"+Util.loadSetting(getActivity()).getPort()+"/transportservice/action/SetCarAccountRecharge.do", jsonObject,
 				new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject jsonObject) {
@@ -166,7 +170,7 @@ public class Fragment_1 extends Fragment implements View.OnClickListener
         }
 
         RequestQueue queue= Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetCarAccountBalance.do", jsonObject,
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+ Util.loadSetting(getActivity()).getUrl()+":"+Util.loadSetting(getActivity()).getPort()+"/transportservice/action/GetCarAccountBalance.do", jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {

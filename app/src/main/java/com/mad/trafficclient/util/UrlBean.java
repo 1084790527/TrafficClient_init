@@ -30,6 +30,14 @@ public class UrlBean  {
         return port;
     }
 
+    @Override
+    public String toString() {
+        return "UrlBean{" +
+                "url='" + url + '\'' +
+                ", port='" + port + '\'' +
+                '}';
+    }
+
     public void setPort(String port) {
         this.port = port;
     }

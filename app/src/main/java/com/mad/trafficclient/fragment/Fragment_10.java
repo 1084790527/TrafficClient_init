@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
 import com.mad.trafficclient.util.UrlBean;
+import com.mad.trafficclient.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +41,7 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
     private LinearLayout ll_1_1,ll_1_2,ll_2_1,ll_2_2;
     private ScheduledFuture schedule;
     private Button btn_details;
+    private UrlBean urlBean;
 
     public Fragment_10() {
         // Required empty public constructor
@@ -83,7 +85,7 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
         RequestQueue queue= Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://172.168.30.65:8080/transportservice/action/GetBusStationInfo.do", object, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetBusStationInfo.do", object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
@@ -122,6 +124,7 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
     }
 
     private void iniv() {
+        urlBean= Util.loadSetting(getActivity());
         btn_details= (Button) view.findViewById(R.id.btn_details);
 
         tv_title_1= (TextView) view.findViewById(R.id.tv_title_1);
