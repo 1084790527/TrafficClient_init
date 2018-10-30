@@ -192,13 +192,23 @@ public class Fragment_5 extends Fragment implements View.OnClickListener {
         tv_PM25= (TextView) view.findViewById(R.id.tv_PM25);
         tv_roadStatus= (TextView) view.findViewById(R.id.tv_roadStatus);
 
-        loadSettingLoad = getActivity().getSharedPreferences("thresholdSetting", MODE_PRIVATE);
-        temperature= Integer.parseInt(loadSettingLoad.getString("temperature",""));
-        humidity= Integer.parseInt(loadSettingLoad.getString("humidity",""));
-        light= Integer.parseInt(loadSettingLoad.getString("light",""));
-        co2= Integer.parseInt(loadSettingLoad.getString("co2",""));
-        pm25= Integer.parseInt(loadSettingLoad.getString("pm25",""));
-        roadStatus= Integer.parseInt(loadSettingLoad.getString("roadStatus",""));
+        try {
+            loadSettingLoad = getActivity().getSharedPreferences("thresholdSetting", MODE_PRIVATE);
+            temperature= Integer.parseInt(loadSettingLoad.getString("temperature",""));
+            humidity= Integer.parseInt(loadSettingLoad.getString("humidity",""));
+            light= Integer.parseInt(loadSettingLoad.getString("light",""));
+            co2= Integer.parseInt(loadSettingLoad.getString("co2",""));
+            pm25= Integer.parseInt(loadSettingLoad.getString("pm25",""));
+            roadStatus= Integer.parseInt(loadSettingLoad.getString("roadStatus",""));
+        } catch (NumberFormatException e) {
+            temperature=0;
+            humidity=0;
+            light=0;
+            co2=0;
+            pm25=0;
+            roadStatus=0;
+            e.printStackTrace();
+        }
     }
 
     @Override
