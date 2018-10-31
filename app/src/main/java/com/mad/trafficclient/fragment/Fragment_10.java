@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -21,9 +22,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
+import com.mad.trafficclient.adapter.Frafment_10_xq_Adapter;
 import com.mad.trafficclient.adapter.Fragment_10_Adapter;
 import com.mad.trafficclient.adapter.ListAdapter;
 import com.mad.trafficclient.bean.BusBean;
+import com.mad.trafficclient.bean.F_10_xq_Bean;
 import com.mad.trafficclient.util.UrlBean;
 import com.mad.trafficclient.util.Util;
 
@@ -174,15 +177,48 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_details:
-//                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-//                View v;
-//                builder.setView(v).create();
-//
-//                AlertDialog dialog=builder.show();
+                final AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+                View v=LayoutInflater.from(getActivity()).inflate(R.layout.layout10_xq,null);
+
+                ListView lv_xq= (ListView) v.findViewById(R.id.lv_xq);
+                Button btn_return= (Button) v.findViewById(R.id.btn_return);
+
+                final AlertDialog dialog=builder.setView(v).create();
+//                builder.show();
+                dialog.show();
+                btn_return.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                setXQList(lv_xq);
                 break;
         }
 
     }
+
+    private void setXQList(ListView lv_xq) {
+        List<F_10_xq_Bean> list=new ArrayList<>();
+        F_10_xq_Bean f_10_xq_bean=new F_10_xq_Bean();
+        f_10_xq_bean.setId("序号");
+        f_10_xq_bean.setBusId("公交车编号");
+        f_10_xq_bean.setNum("承载人数");
+        list.add(f_10_xq_bean);
+        Frafment_10_xq_Adapter frafment_10_xq_adapter=new Frafment_10_xq_Adapter(getActivity(),list);
+        lv_xq.setAdapter(frafment_10_xq_adapter);
+
+        for (int i=1;i<100;i++){
+            F_10_xq_Bean bean=new F_10_xq_Bean();
+            bean.setId(i+"");
+            bean.setBusId(i+"");
+            bean.setNum((int)(Math.random()*100)+"");
+            list.add(bean);
+            frafment_10_xq_adapter.notifyDataSetChanged();
+        }
+    }
+
 
     @Override
     public void onDestroy() {
