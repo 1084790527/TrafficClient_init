@@ -1,9 +1,14 @@
 package com.mad.trafficclient.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.TextView;
+
+import com.mad.trafficclient.R;
+import com.mad.trafficclient.bean.BusBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +17,9 @@ public class Fragment_10_Adapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> strings;
-    private List<List<Fragment_10_Adapter>> list;
+    private List<List<BusBean>> list;
 
-    public Fragment_10_Adapter(Context context, List<String> strings,List<List<Fragment_10_Adapter>> list){
+    public Fragment_10_Adapter(Context context, List<String> strings,List<List<BusBean>> list){
         this.context=context;
         this.strings=strings;
         this.list=list;
@@ -26,7 +31,7 @@ public class Fragment_10_Adapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int i) {
-        return list==null ? 0 : list.size();
+        return list==null ? 0 : list.get(i).size();
     }
 
     @Override
@@ -56,12 +61,18 @@ public class Fragment_10_Adapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
-        return null;
+        view= LayoutInflater.from(context).inflate(R.layout.fragment_10_g_view,null);
+        ((TextView)view.findViewById(R.id.tv_title)).setText(strings.get(i));
+        return view;
     }
 
     @Override
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-        return null;
+        view=LayoutInflater.from(context).inflate(R.layout.fragment_10_c_view,null);
+        ((TextView)view.findViewById(R.id.tv_busid)).setText(list.get(i).get(i1).getBusId());
+        ((TextView)view.findViewById(R.id.tv_time)).setText(list.get(i).get(i1).getTime());
+        ((TextView)view.findViewById(R.id.tv_distance)).setText(list.get(i).get(i1).getDistance());
+        return view;
     }
 
     @Override

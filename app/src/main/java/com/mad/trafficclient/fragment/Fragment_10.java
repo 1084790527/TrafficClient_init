@@ -2,6 +2,7 @@ package com.mad.trafficclient.fragment;
 
 
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mad.trafficclient.R;
+import com.mad.trafficclient.adapter.Fragment_10_Adapter;
+import com.mad.trafficclient.adapter.ListAdapter;
+import com.mad.trafficclient.bean.BusBean;
 import com.mad.trafficclient.util.UrlBean;
 import com.mad.trafficclient.util.Util;
 
@@ -26,6 +31,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -37,11 +44,14 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "AAA";
     private View view;
-    private TextView tv_title_1,tv_title_2,tv_time_1_1,tv_distance_1_1,tv_time_1_2,tv_distance_1_2,tv_time_2_1,tv_distance_2_1,tv_time_2_2,tv_distance_2_2;
-    private LinearLayout ll_1_1,ll_1_2,ll_2_1,ll_2_2;
-    private ScheduledFuture schedule;
+
     private Button btn_details;
     private UrlBean urlBean;
+    private ExpandableListView elv_list;
+    private Fragment_10_Adapter adapter;
+    private List<List<BusBean>> lists;
+    private List<String> strings;
+    private ScheduledFuture scheduledFuture;
 
     public Fragment_10() {
         // Required empty public constructor
@@ -59,117 +69,110 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
 
         init();
 
+        scheduledFuture=Executors.newScheduledThreadPool(3).scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                getData(false);
+            }
+        },3,3,TimeUnit.SECONDS);
+//        scheduledFuture.cancel(true);
         return view;
     }
 
     private void init() {
-        tv_title_1.setOnClickListener(this);
-        tv_title_2.setOnClickListener(this);
+
         btn_details.setOnClickListener(this);
 
-        schedule=Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                setData(1);
-                setData(2);
-            }
-        },0,3, TimeUnit.SECONDS);
+        strings=new ArrayList<>();
+        strings.add("        中医院站");
+        strings.add("        联想大厦站");
+        lists=new ArrayList<>();
+        elv_list= (ExpandableListView) view.findViewById(R.id.elv_list);
+        adapter=new Fragment_10_Adapter(getActivity(),strings,lists);
+        elv_list.setAdapter(adapter);
+
+        getData(true);
+//        setData();
     }
 
-    private void setData(final int id) {
-        JSONObject object=new JSONObject();
-        try {
-            object.put("BusStationId",1);
-            object.put("UserName","sdsds");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RequestQueue queue= Volley.newRequestQueue(getActivity());
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://"+urlBean.getUrl()+":"+urlBean.getPort()+"/transportservice/action/GetBusStationInfo.do", object, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                try {
-                    JSONArray jsonArray=jsonObject.getJSONArray("ROWS_DETAIL");
-                    if (id==1){
-                        int i=jsonArray.getJSONObject(0).getInt("Distance");
-                        int time=i/1000;
-                        tv_time_1_1.setText(time+"分钟到达");
-                        tv_distance_1_1.setText("距离站台"+i+"米");
-                        i=jsonArray.getJSONObject(1).getInt("Distance");
-                        time=i/1000;
-                        tv_time_1_2.setText(time+"分钟到达");
-                        tv_distance_1_2.setText("距离站台"+i+"米");
-                    }else {
-                        int i=jsonArray.getJSONObject(0).getInt("Distance");
-                        int time=i/1000;
-                        tv_time_2_1.setText(time+"分钟到达");
-                        tv_distance_2_1.setText("距离站台"+i+"米");
-                        i=jsonArray.getJSONObject(1).getInt("Distance");
-                        time=i/1000;
-                        tv_time_2_2.setText(time+"分钟到达");
-                        tv_distance_2_2.setText("距离站台"+i+"米");
+    private void getData(final boolean b) {
+
+        for (int i=0;i<2;i++){
+            JSONObject object=new JSONObject();
+            try {
+                object.put("BusStationId",i+1);
+                object.put("UserName","user");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            RequestQueue queue=Volley.newRequestQueue(getActivity());
+            final int finalI = i;
+            JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, "http://" + urlBean.getUrl() + ":" + urlBean.getPort() + "/transportservice/action/GetBusStationInfo.do", object, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+//                    Log.d(TAG, "onResponse: "+jsonObject.toString());
+                    try {
+                        JSONArray array=jsonObject.getJSONArray("ROWS_DETAIL");
+                        List<BusBean> busBeans=new ArrayList<>();
+                        for (int t=0;t<array.length();t++){
+                            JSONObject o=array.getJSONObject(t);
+                            int Distance=o.getInt("Distance");
+                            if (b){
+                                BusBean bean=new BusBean();
+                                bean.setBusId(o.getString("BusId")+"号（101人）");
+                                bean.setTime(Distance/4000+"分钟到达");
+                                bean.setDistance("距离站台"+Distance+"米");
+                                busBeans.add(bean);
+                            }else {
+                                lists.get(finalI).get(t).setBusId(o.getString("BusId")+"号（101人）");
+                                lists.get(finalI).get(t).setTime(Distance/4000+"分钟到达");
+                                lists.get(finalI).get(t).setDistance("距离站台"+Distance+"米");
+                            }
+                        }
+                        if (b){
+                            lists.add(busBeans);
+                        }
+                        adapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
+                }
+            });
+            queue.add(request);
+        }
 
+    }
+
+    private void setData() {
+        for (int i=0;i<2;i++){
+            List<BusBean> busBeans=new ArrayList<>();
+            for (int t=0;t<3;t++){
+                BusBean bean=new BusBean();
+                bean.setBusId(t+"号（101人）");
+                bean.setTime("xxx分钟到达");
+                bean.setDistance("距离站台xxx米");
+                busBeans.add(bean);
             }
-        });
-        queue.add(request);
+            lists.add(busBeans);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void iniv() {
         urlBean= Util.loadSetting(getActivity());
         btn_details= (Button) view.findViewById(R.id.btn_details);
 
-        tv_title_1= (TextView) view.findViewById(R.id.tv_title_1);
-        ll_1_1= (LinearLayout) view.findViewById(R.id.ll_1_1);
-        ll_1_2= (LinearLayout) view.findViewById(R.id.ll_1_2);
-        tv_title_2= (TextView) view.findViewById(R.id.tv_title_2);
-        ll_2_1= (LinearLayout) view.findViewById(R.id.ll_2_1);
-        ll_2_2= (LinearLayout) view.findViewById(R.id.ll_2_2);
-
-        tv_time_1_1= (TextView) view.findViewById(R.id.tv_time_1_1);
-        tv_distance_1_1= (TextView) view.findViewById(R.id.tv_distance_1_1);
-        tv_time_1_2= (TextView) view.findViewById(R.id.tv_time_1_2);
-        tv_distance_1_2= (TextView) view.findViewById(R.id.tv_distance_1_2);
-
-        tv_time_2_1= (TextView) view.findViewById(R.id.tv_time_2_1);
-        tv_distance_2_1= (TextView) view.findViewById(R.id.tv_distance_2_1);
-        tv_time_2_2= (TextView) view.findViewById(R.id.tv_time_2_2);
-        tv_distance_2_2= (TextView) view.findViewById(R.id.tv_distance_2_2);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.tv_title_1:
-                if ("▼    中医院站".equals(tv_title_1.getText().toString())){
-                    tv_title_1.setText("▶    中医院站");
-                    ll_1_1.setVisibility(View.GONE);
-                    ll_1_2.setVisibility(View.GONE);
-                }else {
-                    tv_title_1.setText("▼    中医院站");
-                    ll_1_1.setVisibility(View.VISIBLE);
-                    ll_1_2.setVisibility(View.VISIBLE);
-                }
-                break;
-            case R.id.tv_title_2:
-                if ("▼    联想大厦站".equals(tv_title_2.getText().toString())){
-                    tv_title_2.setText("▶    联想大厦站");
-                    ll_2_1.setVisibility(View.GONE);
-                    ll_2_2.setVisibility(View.GONE);
-                }else {
-                    tv_title_2.setText("▼    联想大厦站");
-                    ll_2_1.setVisibility(View.VISIBLE);
-                    ll_2_2.setVisibility(View.VISIBLE);
-                }
-                break;
             case R.id.btn_details:
 //                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
 //                View v;
@@ -184,6 +187,6 @@ public class Fragment_10 extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        schedule.cancel(false);
+        scheduledFuture.cancel(false);
     }
 }
