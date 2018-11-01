@@ -30,6 +30,9 @@ import com.mad.trafficclient.fragment.Fragment_1;
 import com.mad.trafficclient.fragment.Fragment_10;
 import com.mad.trafficclient.fragment.Fragment_11;
 import com.mad.trafficclient.fragment.Fragment_12;
+import com.mad.trafficclient.fragment.Fragment_13;
+import com.mad.trafficclient.fragment.Fragment_14;
+import com.mad.trafficclient.fragment.Fragment_15;
 import com.mad.trafficclient.fragment.Fragment_2;
 import com.mad.trafficclient.fragment.Fragment_3;
 import com.mad.trafficclient.fragment.Fragment_4;
@@ -112,6 +115,9 @@ public class MainActivity extends FragmentActivity
 				"公交查询",
 				"生活指数",
 				"f12",
+                "f13",
+                "f14",
+                "f15",
                 getString(R.string.res_left_exit)
         };
         final int[]  actionImages = new int[]{
@@ -121,6 +127,9 @@ public class MainActivity extends FragmentActivity
                 R.drawable.btn_l_target,
 				R.drawable.btn_l_target,
                 R.drawable.btn_l_target,
+				R.drawable.btn_l_target,
+				R.drawable.btn_l_target,
+				R.drawable.btn_l_target,
 				R.drawable.btn_l_target,
 				R.drawable.btn_l_target,
 				R.drawable.btn_l_target,
@@ -198,6 +207,18 @@ public class MainActivity extends FragmentActivity
 					tV_title.setText(actionTexts[arg2]);
 					break;
 				case 12:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_13()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
+				case 13:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_14()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
+				case 14:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_15()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
+				case 15:
 					exitAppDialog();
 					break;
 				default:
