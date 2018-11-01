@@ -110,7 +110,7 @@ public class MainActivity extends FragmentActivity
 				"出行管理",
 				"账户管理",
 				"公交查询",
-				"f11",
+				"生活指数",
 				"f12",
                 getString(R.string.res_left_exit)
         };

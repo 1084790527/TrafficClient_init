@@ -5,10 +5,25 @@
     android:layout_height="match_parent"
     tools:context=".fragment.Fragment_11">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="1111111111" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <GridView
+            android:verticalSpacing="20dp"
+            android:columnWidth="400dp"
+            android:id="@+id/gv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="3"
+            android:stretchMode="spacingWidthUniform">
+
+        </GridView>
+    </LinearLayout>
 
 </FrameLayout>
