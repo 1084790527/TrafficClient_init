@@ -114,8 +114,8 @@ public class MainActivity extends FragmentActivity
 				"账户管理",
 				"公交查询",
 				"生活指数",
-				"f12",
-                "f13",
+				"个人中心",
+                "红绿灯管理",
                 "f14",
                 "f15",
                 getString(R.string.res_left_exit)
