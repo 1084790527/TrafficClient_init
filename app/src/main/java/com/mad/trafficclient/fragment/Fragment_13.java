@@ -130,6 +130,7 @@ public class Fragment_13 extends Fragment implements  AdapterView.OnItemSelected
         bean.setGreen(jsonObject.getInt("GreenTime"));
         bean.setYellow(jsonObject.getInt("YellowTime"));
         beanList.add(bean);
+        sort(0);
         listAdapter.notifyDataSetInvalidated();
     }
 
@@ -148,10 +149,87 @@ public class Fragment_13 extends Fragment implements  AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //        Log.d(TAG, "onItemSelected: "+i);
+
+        if (beanList.size()==0){
+            return;
+        }
+
+//        Log.d(TAG, "onItemSelected: "+i);
+        sort(i);
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    private void sort(int t){
+        for (int x=0;x<beanList.size();x++){
+            for (int i=0;i<beanList.size()-1;i++){
+                switch (t){
+                    case 0:
+//        路口升序
+                        if (beanList.get(i).getId() > beanList.get(i+1).getId()){
+                            px(i);
+                        }
+                        break;
+                    case 1:
+//        路口降序
+                        if (beanList.get(i).getId() < beanList.get(i+1).getId()){
+                            px(i);
+                        }
+                        break;
+                    case 2:
+//        红灯升序
+                        if (beanList.get(i).getRed() > beanList.get(i+1).getRed()){
+                            px(i);
+                        }
+                        break;
+                    case 3:
+//        红灯降序
+                        if (beanList.get(i).getRed() < beanList.get(i+1).getRed()){
+                            px(i);
+                        }
+                        break;
+                    case 4:
+//        绿灯升序
+                        if (beanList.get(i).getGreen() > beanList.get(i+1).getGreen()){
+                            px(i);
+                        }
+                        break;
+                    case 5:
+//        绿灯降序
+                        if (beanList.get(i).getGreen() < beanList.get(i+1).getGreen()){
+                            px(i);
+                        }
+                        break;
+                    case 6:
+//        黄灯升序
+                        if (beanList.get(i).getYellow() > beanList.get(i+1).getYellow()){
+                            px(i);
+                        }
+                        break;
+                    case 7:
+//        黄灯降序
+                        if (beanList.get(i).getYellow() < beanList.get(i+1).getYellow()){
+                            px(i);
+                        }
+                        break;
+                }
+
+            }
+        }
+
+        listAdapter.notifyDataSetInvalidated();
+
+
+
+    }
+    private void px(int t){
+        F_13_Bean bean=new F_13_Bean();
+        bean=beanList.get(t);
+        beanList.set(t,beanList.get(t+1));
+        beanList.set(t+1,bean);
     }
 }
