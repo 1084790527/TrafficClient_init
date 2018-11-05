@@ -116,7 +116,7 @@ public class MainActivity extends FragmentActivity
 				"生活指数",
 				"个人中心",
                 "红绿灯管理",
-                "f14",
+                "账户管理",
                 "f15",
                 getString(R.string.res_left_exit)
         };
