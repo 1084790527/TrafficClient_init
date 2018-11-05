@@ -21,6 +21,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -156,7 +157,17 @@ public class MainActivity extends FragmentActivity
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				// TODO Auto-generated method stub
+				LinearLayout layout= (LinearLayout) findViewById(R.id.ll_t);
+				LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) layout.getLayoutParams();
+				if (arg2==13){
+					params.height=0;
+					layout.setLayoutParams(params);
+				}else {
+					params.height=64*2;
+					layout.setLayoutParams(params);
+				}
+
+
 				switch (arg2) {
 				case 0:
 					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_1()).commit();

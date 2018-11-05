@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_t"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="#56abe4"
