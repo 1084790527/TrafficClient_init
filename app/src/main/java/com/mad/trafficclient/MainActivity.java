@@ -124,7 +124,7 @@ public class MainActivity extends FragmentActivity
                 "红绿灯管理",
                 "账户管理",
                 "账户设置",
-				"f16",
+				"路况查询",
 				"f17",
 				"f18",
 				"f19",
