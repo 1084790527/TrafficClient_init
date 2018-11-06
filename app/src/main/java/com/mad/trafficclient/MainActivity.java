@@ -123,7 +123,7 @@ public class MainActivity extends FragmentActivity
 				"个人中心",
                 "红绿灯管理",
                 "账户管理",
-                "f15",
+                "账户设置",
 				"f16",
 				"f17",
 				"f18",
