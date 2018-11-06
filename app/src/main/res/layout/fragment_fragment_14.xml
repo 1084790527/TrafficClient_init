@@ -24,36 +24,48 @@
                 android:layout_gravity="center"
                 android:src="@drawable/change" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="账户管理"
+                android:textColor="#ffffff"
+                android:textSize="28dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right">
+
                 <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="账户管理"
-                    android:textColor="#ffffff"
-                    android:textSize="28dp" />
-                <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="100dp"
+                    android:gravity="center"
                     android:text="批量充值"
                     android:textColor="#ffffff"
                     android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/tv_recharge_record"
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="150dp"
+                    android:gravity="center"
                     android:text="充值记录"
                     android:textColor="#ffffff"
                     android:textSize="20dp" />
-            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -95,6 +107,7 @@
         </LinearLayout>
 
         <ListView
+            android:id="@+id/lv_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
