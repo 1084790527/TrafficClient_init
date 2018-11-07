@@ -126,7 +126,7 @@ public class MainActivity extends FragmentActivity
                 "账户设置",
 				"路况查询",
 				"生活助手",
-				"f18",
+				"公交查询",
 				"f19",
 				"f20",
                 getString(R.string.res_left_exit)

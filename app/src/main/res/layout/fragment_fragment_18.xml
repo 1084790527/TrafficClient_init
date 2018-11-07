@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.Fragment_18">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ExpandableListView
+        android:layout_margin="50dp"
+        android:id="@+id/elb_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+    </ExpandableListView>
 
 </FrameLayout>
