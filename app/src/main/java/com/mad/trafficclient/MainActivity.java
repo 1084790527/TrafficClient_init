@@ -125,7 +125,7 @@ public class MainActivity extends FragmentActivity
                 "账户管理",
                 "账户设置",
 				"路况查询",
-				"f17",
+				"生活助手",
 				"f18",
 				"f19",
 				"f20",
