@@ -133,7 +133,7 @@ public class MainActivity extends FragmentActivity
 				"生活助手",
 				"公交查询",
 				"意见反馈",
-				"f20",
+				"天气信息",
 				"f21",
 				"f22",
 				"f23",
@@ -189,7 +189,7 @@ public class MainActivity extends FragmentActivity
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				LinearLayout layout= (LinearLayout) findViewById(R.id.ll_t);
 				LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) layout.getLayoutParams();
-				if (arg2==13||arg2==18){
+				if (arg2==13||arg2==18||arg2==19){
 					params.height=0;
 					layout.setLayoutParams(params);
 				}else {
