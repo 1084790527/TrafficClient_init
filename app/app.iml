@@ -105,6 +105,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Gradle: __local_jars__:D.\StudioProjects\TrafficClient_init\app\libs\volley.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.android.support:support-v4:19.1.0@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_jars__:D.\StudioProjects\TrafficClient_init\app\libs\zxing3.3.1.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: __local_jars__:D.\StudioProjects\TrafficClient_init\app\libs\achartengine.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: __local_jars__:D.\StudioProjects\TrafficClient_init\app\libs\android-async-http-1.4.3.jar:unspecified@jar" level="project" />
   </component>
