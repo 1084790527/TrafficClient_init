@@ -134,7 +134,7 @@ public class MainActivity extends FragmentActivity
 				"公交查询",
 				"意见反馈",
 				"天气信息",
-				"f21",
+				"二维码支付",
 				"f22",
 				"f23",
 				"f24",
