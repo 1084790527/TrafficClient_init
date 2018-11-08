@@ -40,6 +40,11 @@ import com.mad.trafficclient.fragment.Fragment_18;
 import com.mad.trafficclient.fragment.Fragment_19;
 import com.mad.trafficclient.fragment.Fragment_2;
 import com.mad.trafficclient.fragment.Fragment_20;
+import com.mad.trafficclient.fragment.Fragment_21;
+import com.mad.trafficclient.fragment.Fragment_22;
+import com.mad.trafficclient.fragment.Fragment_23;
+import com.mad.trafficclient.fragment.Fragment_24;
+import com.mad.trafficclient.fragment.Fragment_25;
 import com.mad.trafficclient.fragment.Fragment_3;
 import com.mad.trafficclient.fragment.Fragment_4;
 import com.mad.trafficclient.fragment.Fragment_5;
@@ -129,6 +134,11 @@ public class MainActivity extends FragmentActivity
 				"公交查询",
 				"意见反馈",
 				"f20",
+				"f21",
+				"f22",
+				"f23",
+				"f24",
+				"f25",
                 getString(R.string.res_left_exit)
         };
         final int[]  actionImages = new int[]{
@@ -152,6 +162,11 @@ public class MainActivity extends FragmentActivity
 				R.drawable.btn_l_book,
 				R.drawable.btn_l_slideshow,
 				R.drawable.btn_l_target,
+				R.drawable.btn_l_star,
+				R.drawable.btn_l_book,
+				R.drawable.btn_l_slideshow,
+				R.drawable.btn_l_target,
+				R.drawable.btn_l_star,
                 R.drawable.btn_l_download,
         };
 
@@ -265,10 +280,25 @@ public class MainActivity extends FragmentActivity
 					tV_title.setText(actionTexts[arg2]);
 					break;
 				case 20:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_21()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 21:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_22()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 22:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_23()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 23:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_24()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 24:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_25()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 25:
 				case 26:
 				case 27:
