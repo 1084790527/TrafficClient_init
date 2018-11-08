@@ -135,8 +135,8 @@ public class MainActivity extends FragmentActivity
 				"意见反馈",
 				"天气信息",
 				"二维码支付",
-				"f22",
-				"f23",
+				"红绿灯管理",
+				"车辆违章",
 				"f24",
 				"f25",
                 getString(R.string.res_left_exit)
