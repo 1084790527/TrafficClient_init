@@ -14,6 +14,7 @@ import com.mad.trafficclient.R;
  */
 public class Fragment_21 extends Fragment {
 
+    private View view;
 
     public Fragment_21() {
         // Required empty public constructor
@@ -24,7 +25,18 @@ public class Fragment_21 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_21, container, false);
+        view = inflater.inflate(R.layout.fragment_fragment_21, container, false);
+        iniv();
+        init();
+        return view;
+    }
+
+    private void init() {
+
+    }
+
+    private void iniv() {
+
     }
 
 }
