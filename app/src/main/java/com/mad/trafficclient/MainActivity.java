@@ -137,7 +137,7 @@ public class MainActivity extends FragmentActivity
 				"二维码支付",
 				"红绿灯管理",
 				"车辆违章",
-				"f24",
+				"路况查询",
 				"f25",
                 getString(R.string.res_left_exit)
         };
