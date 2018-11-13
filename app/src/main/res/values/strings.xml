@@ -30,4 +30,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_f_19_">F_19_Activity</string>
 
+    <string name="grzx_1"><u>个人中心</u></string>
+    <string name="grzx_2">个人中心</string>
+
+    <string name="czjl_1"><u>充值记录</u></string>
+    <string name="czjl_2">充值记录</string>
+
+    <string name="fzsz_1"><u>阈值设置</u></string>
+    <string name="fzsz_2">阈值设置</string>
 </resources>

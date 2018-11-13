@@ -45,7 +45,12 @@ import com.mad.trafficclient.fragment.Fragment_22;
 import com.mad.trafficclient.fragment.Fragment_23;
 import com.mad.trafficclient.fragment.Fragment_24;
 import com.mad.trafficclient.fragment.Fragment_25;
+import com.mad.trafficclient.fragment.Fragment_26;
+import com.mad.trafficclient.fragment.Fragment_27;
+import com.mad.trafficclient.fragment.Fragment_28;
+import com.mad.trafficclient.fragment.Fragment_29;
 import com.mad.trafficclient.fragment.Fragment_3;
+import com.mad.trafficclient.fragment.Fragment_30;
 import com.mad.trafficclient.fragment.Fragment_4;
 import com.mad.trafficclient.fragment.Fragment_5;
 import com.mad.trafficclient.fragment.Fragment_6;
@@ -138,7 +143,12 @@ public class MainActivity extends FragmentActivity
 				"红绿灯管理",
 				"车辆违章",
 				"路况查询",
-				"f25",
+				"个人中心",
+				"f26",
+				"f27",
+				"f28",
+				"f29",
+				"f30",
                 getString(R.string.res_left_exit)
         };
         final int[]  actionImages = new int[]{
@@ -167,6 +177,11 @@ public class MainActivity extends FragmentActivity
 				R.drawable.btn_l_slideshow,
 				R.drawable.btn_l_target,
 				R.drawable.btn_l_star,
+				R.drawable.btn_l_book,
+				R.drawable.btn_l_slideshow,
+				R.drawable.btn_l_target,
+				R.drawable.btn_l_star,
+				R.drawable.btn_l_book,
                 R.drawable.btn_l_download,
         };
 
@@ -193,7 +208,7 @@ public class MainActivity extends FragmentActivity
 					params.height=0;
 					layout.setLayoutParams(params);
 				}else {
-					params.height=64*2;
+					params.height=64;
 					layout.setLayoutParams(params);
 				}
 
@@ -300,9 +315,28 @@ public class MainActivity extends FragmentActivity
 					tV_title.setText(actionTexts[arg2]);
 					break;
 				case 25:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_26()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 26:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_27()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 27:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_28()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
 				case 28:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_29()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
+				case 29:
+					getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Fragment_30()).commit();
+					tV_title.setText(actionTexts[arg2]);
+					break;
+				case 30:
+				case 31:
+				case 32:
 					exitAppDialog();
 					break;
 				default:
